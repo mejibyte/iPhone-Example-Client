@@ -25,7 +25,6 @@
 
 @interface SpotViewController () 
 - (void)updateContent;
-- (void)handleCheckInState;
 @end
 
 static NSDateFormatter * _dateFormatter;
@@ -37,39 +36,18 @@ static EGOHTTPFormRequest * checkInRequest;
 
 @synthesize spot;
 @synthesize checkIns;
-@synthesize locationManager;
 
 - (id)initWithSpot:(Spot *)someSpot {
 	if (self = [super initWithNibName:@"SpotView" bundle:nil]) {
 		self.spot = someSpot;
-		
-		self.locationManager = [[CLLocationManager alloc] init];
-		self.locationManager.delegate = self;
-		self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-		self.locationManager.distanceFilter = 80.0;
 	}
 	
 	return self;
 }
 
-- (void)dealloc {
-	self.locationManager.delegate = nil;
-	
+- (void)dealloc {	
 	[spot release];
-	[locationManager release];
 	[super dealloc];
-}
-
-- (void)handleCheckInState {
-	if ([Spot canCheckInAtSpot:self.spot fromLocation:self.locationManager.location]) {
-		[checkInButton setTitle:NSLocalizedString(@"Check In", nil) 
-					   forState:UIControlStateNormal];
-		checkInButton.enabled = YES;
-	} else {
-		[checkInButton setTitle:[self.locationManager distanceAndDirectionTo:self.spot.location] 
-					   forState:UIControlStateDisabled];
-		checkInButton.enabled = NO;
-	}
 }
 
 #pragma mark -
@@ -93,55 +71,19 @@ static EGOHTTPFormRequest * checkInRequest;
 									delegate:self 
 									selector:@selector(requestDidFinish:)];
 
-	[spotRequest startAsynchronous];
-	
-	[self.locationManager startUpdatingLocation];
+	[spotRequest startAsynchronous];	
 }
 
 - (void)viewDidUnload {
 	[super viewDidUnload];
-	[self.locationManager stopUpdatingLocation];
 }
 
 - (void)updateContent {
 	nameLabel.text = self.spot.name;
 	[imageView setImageURL:self.spot.imageURL];
 	
-	checkInButton.titleLabel.numberOfLines = 2;
-	checkInButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-	
 	[mapView addAnnotation:self.spot];
 	[mapView setRegion:MKCoordinateRegionMakeWithDistance(self.spot.coordinate, 1000, 1000) animated:YES];
-}
-
-#pragma mark -
-#pragma mark IBAction
-
-- (IBAction)checkIn:(id)sender {
-	[checkInButton setEnabled:NO];
-	
-	CLLocation * currentLocation = self.locationManager.location;
-	CLLocationAccuracy accuracy = currentLocation.horizontalAccuracy;
-	CLLocationDegrees latitude = currentLocation.coordinate.latitude;
-	CLLocationDegrees longitude = currentLocation.coordinate.longitude;
-	
-	NSString * URLString = [@"http://api.gowalla.com/checkins.json" stringByAppendingFormat:@"?oauth_token=%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"gowalla_basic_oauth_access_token"]];
-	
-	checkInRequest = [[EGOHTTPFormRequest alloc] initWithURL:[NSURL URLWithString:URLString]
-													delegate:self];
-	[checkInRequest setDidFailSelector:@selector(requestDidFinish:)];
-	
-	[checkInRequest setPostValue:self.spot.identifier 
-						  forKey:@"spot_id"];
-	[checkInRequest setPostValue:[[NSNumber numberWithDouble:latitude] stringValue]
-						  forKey:@"lat"];
-	[checkInRequest setPostValue:[[NSNumber numberWithDouble:longitude] stringValue]
-						  forKey:@"lng"];
-	[checkInRequest setPostValue:[[NSNumber numberWithDouble:accuracy] stringValue]
-						  forKey:@"accuracy"];
-
-	
-	[checkInRequest startSynchronous];
 }
 
 #pragma mark -
@@ -174,20 +116,7 @@ static EGOHTTPFormRequest * checkInRequest;
 									delegate:nil 
 						   cancelButtonTitle:NSLocalizedString(@"OK", nil) 
 						   otherButtonTitles:nil] autorelease] show];
-	}
-	
-	[self handleCheckInState];
-}
-
-#pragma mark -
-#pragma mark CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager 
-	didUpdateToLocation:(CLLocation *)newLocation 
-		   fromLocation:(CLLocation *)oldLocation 
-{
-	NSLog(@"locationManager:didUpdateToLocation:fromLocation:");
-	[self handleCheckInState];
+	}	
 }
 
 #pragma mark -

@@ -17,22 +17,15 @@
 @interface SpotViewController : UITableViewController <CLLocationManagerDelegate> {
 	Spot * spot;
 	NSArray * checkIns;
-	
-	CLLocationManager * locationManager;
-	
+		
 	IBOutlet UILabel * nameLabel;
 	IBOutlet EGOImageView * imageView;
-	IBOutlet UIButton * checkInButton;
 	IBOutlet MKMapView * mapView;
 }
 
 @property (nonatomic, retain) Spot * spot;
 @property (nonatomic, retain) NSArray * checkIns;
 
-@property (nonatomic, retain) CLLocationManager * locationManager;
-
 - (id)initWithSpot:(Spot *)someSpot;
-
-- (IBAction)checkIn:(id)sender;
 
 @end
