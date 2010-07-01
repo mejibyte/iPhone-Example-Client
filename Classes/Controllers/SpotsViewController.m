@@ -71,7 +71,6 @@
 
 - (void)viewDidUnload {
 	[super viewDidUnload];
-	
 	[EGOHTTPRequest cancelRequestsForDelegate:self];
 	[self.locationManager stopUpdatingLocation];
 }

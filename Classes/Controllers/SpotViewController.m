@@ -76,6 +76,9 @@ static EGOHTTPFormRequest * checkInRequest;
 
 - (void)viewDidUnload {
 	[super viewDidUnload];
+	nameLabel = nil;
+	imageView = nil;
+	mapView = nil;
 }
 
 - (void)updateContent {

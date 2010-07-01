@@ -24,6 +24,13 @@
 	[webView loadRequest:OAuthURLRequest];
 }
 
+- (void)viewDidUnload {
+	[super viewDidUnload];
+	[webView stopLoading];
+	webView.delegate = nil;
+	webView = nil;
+}
+
 #pragma mark -
 #pragma mark UIWebViewDelegate
 

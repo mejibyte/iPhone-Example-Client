@@ -64,7 +64,6 @@ static NSDateFormatter * _dateFormatter;
 
 - (void)viewDidUnload {
 	[super viewDidUnload];
-	
 	nameLabel = nil;
 	hometownLabel = nil;
 	imageView = nil;
