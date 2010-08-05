@@ -1,7 +1,7 @@
 #  Gowalla-Basic
 ## A simple example iPhone App using the Gowalla API
 
-We created this example application as a resource to help you get up to speed with the Gowalla API on the iPhone. The app implements a basic feature set, including an authentication flow using OAuth.
+We created this example application as a resource to help you get up to speed with the Gowalla API on the iPhone. The app implements a basic feature set, including an authentication flow using OAuth and checking-in to nearby Spots.
 
 As you might expect, the Core Location and MapKit frameworks are central to the functionality of the app. If you are just getting started with location programming on the iPhone, you might want to check out Apple's [Core Location Framework Reference](http://developer.apple.com/iphone/library/documentation/CoreLocation/Reference/CoreLocation_Framework/index.html) and [MapKit Framework Reference Guide](http://developer.apple.com/iphone/library/documentation/MapKit/Reference/MapKit_Framework_Reference/index.html) before diving in.
 
@@ -18,8 +18,8 @@ Gowalla-Basic comes working out-of-the-box with its own API key, secret, and cal
   For <u>Callback URL</u> you will most likely want to use a custom URL scheme. This should be something unique, for example a dasherized version of your application's name (ie. my-app://callback). 
     
     **Note**: Do not use gowalla://, as this is already reserved by Gowalla for iPhone and iPad, and will cause conflicts.
-- Once you've submitted your form and gotten your API credentials, open up <tt>GowallaAPIKeys.h</tt>. Replace all of the API constants with your own values.
-- Next, open up <tt>Info.plist</tt>. Under "URL types > Item 0" change the identifier and scheme to match your callback URI.
+- Once you've submitted your form and gotten your API credentials, open up `GowallaAPIKeys.h`. Replace all of the API constants with your own values.
+- Next, open up `Info.plist`. Under "URL types > Item 0" change the identifier and scheme to match your callback URI.
 - All done! If there's an existing copy of the app in the simulator, you should delete it to reset your application credentials.
 
 ## Libraries
