@@ -54,7 +54,7 @@
 	[request addRequestHeader:@"X-Gowalla-API-Key" 
 						value:kGowallaAPIKey];
 	
-	return [request autorelease];
+	return request;
 }
 
 @end

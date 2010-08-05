@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EGOImageView.h"
 
-@class EGOImageView;
-
-@interface AFImageLoadingCell : UITableViewCell {
+@interface AFImageLoadingCell : UITableViewCell <EGOImageViewDelegate> {
 @private
-	EGOImageView* imageView;
+	EGOImageView * imageView;
 }
 
 - (void)setImageURL:(NSURL *)url;

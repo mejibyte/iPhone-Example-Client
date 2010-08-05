@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	NSString * OAuthURLString = [kGowallaOAuthURL stringByAppendingFormat:@"?redirect_uri=%@&client_id=%@", kGowallaRedirectURI, kGowallaAPIKey];
+	NSString * OAuthURLString = [kGowallaOAuthURL stringByAppendingFormat:@"?redirect_uri=%@&client_id=%@&scope=%@", kGowallaRedirectURI, kGowallaAPIKey, @"read-write"];
 	NSURL * OAuthURL = [NSURL URLWithString:OAuthURLString];
 	NSURLRequest * OAuthURLRequest = [[[NSURLRequest alloc] initWithURL:OAuthURL] autorelease];
 	

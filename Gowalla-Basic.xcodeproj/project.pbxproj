@@ -43,6 +43,7 @@
 		F81D48A711DAFEEE0052A291 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D48A611DAFEEE0052A291 /* User.m */; };
 		F81D48AA11DAFEF70052A291 /* CheckIn.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D48A911DAFEF70052A291 /* CheckIn.m */; };
 		F81D48BE11DB02FB0052A291 /* ISO8601DateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F81D48BD11DB02FB0052A291 /* ISO8601DateFormatter.m */; };
+		F826BB41120B121700FA5439 /* URLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F826BB40120B121700FA5439 /* URLParser.m */; };
 		F84CB51111DBA498004E8367 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F84CB51011DBA498004E8367 /* NSData+Base64.m */; };
 		F84CB51B11DBA50D004E8367 /* CheckInSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F84CB51911DBA50D004E8367 /* CheckInSuccessViewController.m */; };
 		F84CB58E11DBC3AC004E8367 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F84CB58C11DBC3AC004E8367 /* AuthenticationViewController.m */; };
@@ -123,6 +124,8 @@
 		F81D48A911DAFEF70052A291 /* CheckIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckIn.m; sourceTree = "<group>"; };
 		F81D48BC11DB02FB0052A291 /* ISO8601DateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601DateFormatter.h; sourceTree = "<group>"; };
 		F81D48BD11DB02FB0052A291 /* ISO8601DateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO8601DateFormatter.m; sourceTree = "<group>"; };
+		F826BB3F120B121700FA5439 /* URLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLParser.h; sourceTree = "<group>"; };
+		F826BB40120B121700FA5439 /* URLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLParser.m; sourceTree = "<group>"; };
 		F84CB50F11DBA498004E8367 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		F84CB51011DBA498004E8367 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		F84CB51811DBA50D004E8367 /* CheckInSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInSuccessViewController.h; sourceTree = "<group>"; };
@@ -279,6 +282,8 @@
 				F81D46B711DACB580052A291 /* EGOHTTPRequest */,
 				F81D46BC11DACB580052A291 /* EGOImageLoader */,
 				F81D468E11DACA340052A291 /* TouchJSON */,
+				F826BB3F120B121700FA5439 /* URLParser.h */,
+				F826BB40120B121700FA5439 /* URLParser.m */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				F84CB58E11DBC3AC004E8367 /* AuthenticationViewController.m in Sources */,
 				F84CB65111DBD33E004E8367 /* GowallaAPI.m in Sources */,
 				F8946C4D11DCFEF500E14FCF /* PassportViewController.m in Sources */,
+				F826BB41120B121700FA5439 /* URLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

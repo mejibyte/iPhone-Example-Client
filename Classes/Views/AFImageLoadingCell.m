@@ -16,10 +16,18 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 		imageView = [[EGOImageView alloc] initWithPlaceholderImage:[UIImage imageNamed:@"placeholder.png"]];
 		imageView.frame = CGRectMake(5.0f, 5.0f, 50.0f, 50.0f);
+		imageView.delegate = self;
 		[self.contentView addSubview:imageView];
 	}
 	
     return self;
+}
+
+- (void)dealloc {
+	imageView.delegate = nil;
+	[imageView cancelImageLoad];
+	[imageView release];
+    [super dealloc];
 }
 
 - (void)setImageURL:(NSURL *)url {
@@ -41,9 +49,11 @@
 	self.detailTextLabel.frame = CGRectOffset(self.detailTextLabel.frame, 60.0f, 0.0f);
 }
 
-- (void)dealloc {
-	[imageView release];
-    [super dealloc];
+#pragma mark -
+#pragma mark EGOImageViewDelegate
+
+- (void)imageViewLoadedImage:(EGOImageView*)someImageView {
+	[imageView setNeedsDisplay];
 }
 
 @end
