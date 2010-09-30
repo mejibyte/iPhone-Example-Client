@@ -1,4 +1,4 @@
-#define kGowallaOAuthURL		@"http://gowalla.com/api/oauth/new"
+#define kGowallaOAuthURL		@"https://gowalla.com/api/oauth/new"
 
 // Credentials for authentication using OAuth
 // Replace with your own credentials, available at http://api.gowalla.com/api/keys
